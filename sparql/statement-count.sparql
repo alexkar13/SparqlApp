@@ -1,0 +1,3 @@
+# Returns the number of statements bound to the variable `?size`.
+
+select (count(*) as ?size) where { ?s ?p ?o . }

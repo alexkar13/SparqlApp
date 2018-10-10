@@ -1,0 +1,31 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "This app display SPARQL queries \u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOs\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001b\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOD\u001bOys SPARQL queries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
+  },
+  "author": "Alex Karydis",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-modal": "^3.6.1",
+    "react-table": "^6.8.6",
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9",
+    "yasgui-yasqe": "^2.11.22"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "webpack-cli": "^3.1.2"
+  }
+}

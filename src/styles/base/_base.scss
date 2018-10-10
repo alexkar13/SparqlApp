@@ -1,0 +1,30 @@
+html {
+    font-family: 62.5%;
+}
+
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    font-size: 14px;
+    margin: 0 5%;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled{
+    cursor: default;
+}
+
+p {
+    text-align: center;
+}
+
+.flex-div{
+    display: flex;
+}
+
+.sparql-table{
+    margin-bottom: 5%;
+}
