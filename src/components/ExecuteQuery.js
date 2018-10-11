@@ -20,7 +20,7 @@ export default class ExecuteQuery extends React.Component {
                         {this.state.error && <p>{this.state.error}</p>}
                         <div className="inputs">
                             <textarea className="input" type="text" name="sparqlQuery" placeholder = "You may add your custom query or press query from the queries table to execute existing queries." required/> 
-                            <button className="input submit-btn" type="submit">ADD</button>     
+                            <button className="input submit-btn" type="submit">QUERY</button>     
                         </div>
                     </form>
             </div>

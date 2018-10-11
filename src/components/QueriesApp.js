@@ -116,11 +116,11 @@ export default class QueriesApp extends React.Component {
                     fetchData = {this.fetchData}
                     error = {this.state.error}
                 />
+                <SparqlTable sparqlData = {this.state.sparqlData} />
                 <div className="flex-div">
                     <AddQuery handleAddQuery = {this.handleAddQuery} />
                     <ExecuteQuery handleExecuteQuery = {this.handleExecuteQuery} />
                 </div>
-                <SparqlTable sparqlData = {this.state.sparqlData} />
                 <EditModal
                     selectedQuery = {this.state.selectedQuery} 
                     handleEditQuery ={this.handleEditQuery}
