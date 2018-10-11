@@ -16,8 +16,8 @@ export default class QueriesApp extends React.Component {
         sparqlData: undefined
     }
     // Here goes the authentication key if it is not there
-    authKey = "";
-    apiUrl = "http://challenge.semmtech.com/sparql-cabinet/api/";
+    authKey = "24153d5c-172c-4440-a3e5-5e3e0b1a51fc";
+    apiUrl = "";
 
     handleAddQuery = (query) => {
         if (!query.id || !query.name || !query.creator || !query.query){
@@ -116,6 +116,7 @@ export default class QueriesApp extends React.Component {
                     fetchData = {this.fetchData}
                     error = {this.state.error}
                 />
+                <SparqlTable sparqlData = {this.state.sparqlData} />
                 <div className="flex-div">
                     <AddQuery handleAddQuery = {this.handleAddQuery} />
                     <ExecuteQuery handleExecuteQuery = {this.handleExecuteQuery} />
