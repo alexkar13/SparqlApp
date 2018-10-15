@@ -32,7 +32,7 @@ export default class QueriesApp extends React.Component<any, IState> {
         sparqlData: undefined
     }
     // Here goes the authentication key if it is not there
-    authKey: string = "24153d5c-172c-4440-a3e5-5e3e0b1a51fc";
+    authKey: string = "";
     apiUrl: string = "http://challenge.semmtech.com/sparql-cabinet/api/";
 
     handleAddQuery:any = (query: IQuery) => {
