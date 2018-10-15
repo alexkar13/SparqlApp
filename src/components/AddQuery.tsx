@@ -1,16 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 
-export default class AddQuery extends React.Component {
+interface IProps {
+    handleAddQuery: any
+}
+
+export default class AddQuery extends React.Component<IProps> {
     state = {
         error: undefined
     }
-    handleAddQuery = (e) => {
+    handleAddQuery = (e: any) => {
         e.preventDefault();
         const query = {
-            id: e.target.elements.id.value.trim(),
-            name: e.target.elements.name.value.trim(),
             creator: e.target.elements.creator.value.trim(),
             description: e.target.elements.description.value.trim(),
+            id: e.target.elements.id.value.trim(),
+            name: e.target.elements.name.value.trim(),
             query: e.target.elements.query.value.trim()
         }
         const error = this.props.handleAddQuery(query);
@@ -33,7 +37,7 @@ export default class AddQuery extends React.Component {
                         <input className="input" type="text" name="creator" placeholder = "creator" required/>
                         <input className="input" type="text" name="description" placeholder = "description"/>
                         <br/>
-                        <textarea className="input" type="text" name="query" placeholder = "query" required/> 
+                        <textarea className="input" name="query" placeholder = "query" required/> 
                         <button className="input submit-btn" type="submit">ADD</button>     
                     </div>
                     <br></br>

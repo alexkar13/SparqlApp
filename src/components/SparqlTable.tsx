@@ -1,23 +1,26 @@
-import React from 'react';
+import * as React from 'react';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 
-export default class SparqlTable extends React.Component{
+interface IProps {
+    sparqlData:any
+}
 
-    createColumns = (sparqlData) => {
+export default class SparqlTable extends React.Component<IProps>{
+
+    createColumns = (sparqlData:any) => {
         const vars = sparqlData.head.vars;
-        const columns = [];
-        vars.forEach((headerName) => {
+        const columns: any = [];
+        vars.forEach((headerName: any) => {
             columns.push({
                 Header: headerName,
-                id: headerName,
-                accessor: (d) => { 
+                accessor: (d: any) => { 
                     if(!d[headerName]){
                         return 'No Entry';
                     }
                     return d[headerName].value;
-                }
-
+                },
+                id: headerName,
             });
         });
         return columns; 

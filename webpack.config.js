@@ -1,23 +1,14 @@
 const path = require('path');
 
-console.log(path.join(__dirname, 'public'));
-
 module.exports = {
-    mode:"development",
-    entry: './src/app.js',
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+    devServer: {
+        contentBase: "public"
     },
+    devtool:'cheap-module-eval-source-map',
+    entry: './src/index.tsx',
+    mode:"development",
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                use: [
-                    {loader: 'babel-loader'}
-                ],
-                exclude: /node_modules/
-            },
             {
                 test: /\.s?css$/,
                 use: [
@@ -25,11 +16,24 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                test: /\.(tsx?)|(js)$/,
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
             }
         ]
     },
-    devtool:'cheap-module-eval-source-map',
-    devServer: {
-        contentBase: "public"
+    output: {
+        filename: 'bundle.js',
+        path: path.join(__dirname, 'public')
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".json"]
     }
 };
