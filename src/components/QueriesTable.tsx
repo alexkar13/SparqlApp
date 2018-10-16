@@ -1,9 +1,21 @@
-import React from 'react';
+import * as React from 'react';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 
-export default class QueriesTable extends React.Component{
-    componentDidUpdate(prevProps){
+import IQuery from './QueriesApp';
+
+
+interface IProps {
+    queries: Array<IQuery>
+    handleDeleteQuery: any
+    handleEditButton: any
+    handleExecuteQuery: any
+    fetchData: any
+    error: any
+}
+
+export default class QueriesTable extends React.Component<IProps>{
+    componentDidUpdate(prevProps: IProps){
         if(JSON.stringify(this.props.queries) !== JSON.stringify(prevProps.queries)){
         this.props.fetchData();
         }
@@ -33,31 +45,31 @@ export default class QueriesTable extends React.Component{
                 accessor: "query" 
             },
             {
-                Header: "Delete Button",
-                accessor: "delete-btn",
-                Cell: (row) => (
+                Cell: (row: any) => (
                     <button className = "my-btn" onClick={(e) => this.props.handleDeleteQuery(this.props.queries[row.index])}>Delete</button>
                 ),
-                width:100,
-                filterable: false
+                Header: "Delete Button",
+                accessor: "delete-btn",
+                filterable: false,
+                width:100
             },
             {
-                Header: "Edit Button",
-                accessor: "edit-btn",
-                Cell: (row) => ( 
+                Cell: (row: any) => ( 
                     <button className="my-btn" onClick={(e) => this.props.handleEditButton(row.index)}>Edit</button>
                 ),
-                maxWidth: 100,
-                filterable: false
+                Header: "Edit Button",
+                accessor: "edit-btn",
+                filterable: false,
+                maxWidth: 100
             },
             {
+                Cell: (row: any) => (
+                    <button className="my-btn" onClick={(e) => this.props.handleExecuteQuery(this.props.queries[row.index]['query'])}>Query {row.query}</button>
+                ),
                 Header: "Query Button",
                 accessor: "query-btn",
-                Cell: (row, columns) => (
-                    <button className="my-btn" onClick={(e) => this.props.handleExecuteQuery(this.props.queries[row.index].query)}>Query {row.query}</button>
-                ),
-                maxWidth: 100,
-                filterable: false
+                filterable: false,
+                maxWidth: 100
             }
         ];
 
@@ -68,7 +80,7 @@ export default class QueriesTable extends React.Component{
                 <ReactTable
                     data={this.props.queries}
                     filterable
-                    defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
+                    defaultFilterMethod={(filter:any, row:any) => String(row[filter.id]) === filter.value}
                     columns={columns}
                     defaultPageSize={4}
                     className="-striped -highlight"
