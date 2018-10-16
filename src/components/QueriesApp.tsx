@@ -45,9 +45,9 @@ export default class QueriesApp extends React.Component<any, IState> {
         }
         axios.post(`${this.apiUrl}sparql/queries?api_key=${this.authKey}`, query)
             .then(() => this.fetchData())
-            .catch(error => this.handleAxiosErrors(error));
-
-        return undefined;
+            .catch(error => this.handleAxiosErrors(error)
+        );
+            
     }
 
     handleEditQuery = (query: IQuery) => { 
@@ -56,7 +56,8 @@ export default class QueriesApp extends React.Component<any, IState> {
                 this.fetchData();
                 this.setState({selectedQuery: undefined});
             })
-            .catch(error => this.handleAxiosErrors(error));
+            .catch(error => this.handleAxiosErrors(error)
+        );
     }
 
     handleDeleteQuery = (query: IQuery) => {
@@ -77,11 +78,15 @@ export default class QueriesApp extends React.Component<any, IState> {
           })
           .then((res) => { 
             this.setState({
-                sparqlData: res.data
+                sparqlData: res.data,
+                error: undefined
             })   
           })
           .catch((error) => {
             this.handleAxiosErrors(error)
+            this.setState({
+                error: 'Sparql query syntax is invalid.'
+            });
           });
     }
 
@@ -134,7 +139,10 @@ export default class QueriesApp extends React.Component<any, IState> {
                     fetchData = {this.fetchData}
                     error = {this.state.error}
                 />
-                <SparqlTable sparqlData = {this.state.sparqlData} />
+                <SparqlTable 
+                    sparqlData = {this.state.sparqlData}
+                    error = {this.state.error}
+                />
                 <div className="flex-div">
                     <AddQuery handleAddQuery = {this.handleAddQuery} />
                     <ExecuteQuery handleExecuteQuery = {this.handleExecuteQuery} />

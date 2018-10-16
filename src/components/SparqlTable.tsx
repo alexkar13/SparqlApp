@@ -3,10 +3,15 @@ import ReactTable from 'react-table';
 import "react-table/react-table.css";
 
 interface IProps {
-    sparqlData:any
+    sparqlData:any,
+    error: any
 }
 
 export default class SparqlTable extends React.Component<IProps>{
+
+    state = {
+        error: undefined
+    }
 
     createColumns = (sparqlData:any) => {
         const vars = sparqlData.head.vars;
@@ -29,19 +34,20 @@ export default class SparqlTable extends React.Component<IProps>{
     render(){
         return (
             <div>
-                {this.props.sparqlData && 
                     <div className="sparql-table">
                         <h2>Sparql Table</h2>
-                        <ReactTable
-                            data={this.props.sparqlData.results.bindings}
-                            filterable
-                            defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
-                            columns={this.createColumns(this.props.sparqlData)}
-                            defaultPageSize={5}
-                            className="-striped -highlight"
-                        />
+                        {this.props.error && <p>{this.props.error}</p>}
+                        {this.props.sparqlData && 
+                            <ReactTable
+                                data={this.props.sparqlData.results.bindings}
+                                filterable
+                                defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
+                                columns={this.createColumns(this.props.sparqlData)}
+                                defaultPageSize={5}
+                                className="-striped -highlight"
+                            />  
+                        }
                     </div>
-                }
             </div>
          
         );
